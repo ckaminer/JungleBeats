@@ -83,14 +83,41 @@ class LinkedListTest < Minitest::Test
     assert_equal nil,    list.find_tail.next_node
   end
 
-  def test_position_returns_position_of_empty_and_single_node_list
+  def test_insert_into_first_position_becomes_head
+    list = LinkedList.new
+    list.insert(1,"beep")
+
+    assert_equal "beep", list.head.data
+  end
+
+  def test_insert_into_middle_of_list_updates_count
     list = LinkedList.new
     list.append("beep")
-    #binding.pry
-    #assert_equal 1, list.position("beep")
     list.append("boop")
+    list.append("doop")
+    list.append("deep")
+    assert_equal 4, list.count
 
-    #assert_equal 2, list.position("boop")
+    list.insert(2, "jeep")
+    #binding.pry
+    assert_equal 5, list.count
+  end
+
+  def test_insert_produces_correct_order
+    list = LinkedList.new
+    list.append("beep")
+    list.append("boop")
+    list.append("doop")
+    list.append("deep")
+    list.insert(2, "jeep")
+
+    second_node = list.head.next_node
+    third_node  = list.head.next_node.next_node
+
+    assert_equal "beep", list.head.data
+    assert_equal "jeep", second_node.data
+    assert_equal "boop", third_node.data
+    assert_equal "deep", list.find_tail.data
   end
 
 

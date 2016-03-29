@@ -19,15 +19,23 @@ require 'pry'
   end
 
   def insert(position, data)
+    @node_data << data
     @head = Node.new(data) if empty?
-    current = @head
-    count = 0
     if position == 1
       prepend(data)
     elsif position > 1
-      until position == count
+      current = @head
+      count = 1
+      until position - 1 == count
         count += 1
         current = current.next_node
+      end
+        reattach_node = current.next_node
+        current.next_node = Node.new(data)
+        current.next_node.next_node = reattach_node
+    else
+      "This is broken"
+    end
   end
 
   def prepend(data)
@@ -56,7 +64,7 @@ require 'pry'
       end
     end
       counter
-    end
+  end
 
   def to_string
     @node_data.join(" ")
@@ -69,6 +77,5 @@ require 'pry'
     end
     current
   end
-
 
 end
