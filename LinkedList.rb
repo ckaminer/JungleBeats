@@ -23,7 +23,7 @@ require 'pry'
     @head = Node.new(data) if empty?
     if position == 1
       prepend(data)
-    elsif position > 1
+    else position > 1
       current = @head
       count = 1
       until position - 1 == count
@@ -34,8 +34,6 @@ require 'pry'
         current.next_node = Node.new(data)
         current.next_node.next_node = reattach_node
         @node_data.insert(position - 1, data)
-    else
-      "This is broken"
     end
   end
 
@@ -80,8 +78,20 @@ require 'pry'
     current
   end
 
-  def includes?(data)
-    @node_data.include?(data)
+  def includes?(chunk)
+    # binding.pry
+    false if empty?
+    current = @head
+    until current.data == chunk
+      current = current.next_node
+      break if find_tail.data != chunk
+    end
+      current.data == chunk
+      # if current.data == chunk
+      #   true
+      # else
+      #   false
+      # end
   end
 
   def find(position, length)

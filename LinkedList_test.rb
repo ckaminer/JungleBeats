@@ -109,7 +109,7 @@ class LinkedListTest < Minitest::Test
     list.append("boop")
     list.append("doop")
     list.append("deep")
-    binding.pry
+    #binding.pry
     list.insert(2, "jeep")
 
     second_node = list.head.next_node
@@ -149,7 +149,7 @@ class LinkedListTest < Minitest::Test
     list.append("boop")
     list.append("doop")
     result = list.pop
-    binding.pry
+    #binding.pry
 
     assert_equal "doop", result
   end
