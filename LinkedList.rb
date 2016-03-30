@@ -107,12 +107,16 @@ require 'pry'
     tail_return = find_tail.data
     current = @head
     counter = 1
-    until counter + 1 == count
-      counter += 1
-      current = current.next_node
-    end
-    if counter + 1 == count
-      current.next_node = nil
+    if current.next_node == nil
+      current.data = nil
+    else
+      until counter + 1 == count
+        counter += 1
+        current = current.next_node
+      end
+      if counter + 1 == count
+        current.next_node = nil
+      end
     end
     @node_data.pop
     tail_return
