@@ -5,9 +5,14 @@ require 'pry'
   attr_accessor :list
 
   def initialize
-    @list = list
+    @list = LinkedList.new
   end
 
-
+  def append(string)
+    array = string.split(" ")
+    array.each do |word|
+      @list.append(word)
+    end
+  end
 
 end
