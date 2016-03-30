@@ -21,11 +21,11 @@ require 'pry'
 
   def insert(position, data)
     @head = Node.new(data) if empty?
-    if position == 1
+    if position == 0
       prepend(data)
-    else position > 1
+    else position > 0
       current = @head
-      count = 1
+      count = 0
       until position - 1 == count
         count += 1
         current = current.next_node
@@ -33,7 +33,7 @@ require 'pry'
         reattach_node = current.next_node
         current.next_node = Node.new(data)
         current.next_node.next_node = reattach_node
-        @node_data.insert(position - 1, data)
+        @node_data.insert(position, data)
     end
   end
 
@@ -78,7 +78,6 @@ require 'pry'
   end
 
   def includes?(chunk)
-    # binding.pry
     false if empty?
     current = @head
     until current.data == chunk
@@ -121,8 +120,5 @@ require 'pry'
     @node_data.pop
     tail_return
   end
-
-
-
 
 end

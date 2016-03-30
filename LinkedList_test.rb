@@ -77,7 +77,6 @@ class LinkedListTest < Minitest::Test
     list.prepend("doop")
 
     assert_equal "doop", list.head.data
-    #binding.pry
     assert_equal "beep", list.head.next_node.data
     assert_equal "boop", list.find_tail.data
     assert_equal nil,    list.find_tail.next_node
@@ -85,7 +84,7 @@ class LinkedListTest < Minitest::Test
 
   def test_insert_into_first_position_becomes_head
     list = LinkedList.new
-    list.insert(1,"beep")
+    list.insert(0,"beep")
 
     assert_equal "beep", list.head.data
   end
@@ -99,7 +98,6 @@ class LinkedListTest < Minitest::Test
     assert_equal 4, list.count
 
     list.insert(2, "jeep")
-    #binding.pry
     assert_equal 5, list.count
   end
 
@@ -109,8 +107,7 @@ class LinkedListTest < Minitest::Test
     list.append("boop")
     list.append("doop")
     list.append("deep")
-    #binding.pry
-    list.insert(2, "jeep")
+    list.insert(1, "jeep")
 
     second_node = list.head.next_node
     third_node  = list.head.next_node.next_node
@@ -149,7 +146,6 @@ class LinkedListTest < Minitest::Test
     list.append("boop")
     list.append("doop")
     result = list.pop
-    #binding.pry
 
     assert_equal "doop", result
   end
