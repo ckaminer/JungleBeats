@@ -16,10 +16,10 @@ require 'pry'
     else
       find_tail.next_node = Node.new(data)
     end
+    data
   end
 
   def insert(position, data)
-    @node_data << data
     @head = Node.new(data) if empty?
     if position == 1
       prepend(data)
@@ -33,17 +33,19 @@ require 'pry'
         reattach_node = current.next_node
         current.next_node = Node.new(data)
         current.next_node.next_node = reattach_node
+        @node_data.insert(position - 1, data)
     else
       "This is broken"
     end
   end
 
   def prepend(data)
-    @node_data << data
+    @node_data.unshift(data)
     #@head.next_node = @head
     head = Node.new(data)
     head.next_node = @head
     @head = head
+    data
   end
 
   def empty?
@@ -77,5 +79,42 @@ require 'pry'
     end
     current
   end
+
+  def includes?(data)
+    @node_data.include?(data)
+  end
+
+  def find(position, length)
+      current = @head
+      count = 1
+      until position == count
+        count += 1
+        current = current.next_node
+      end
+      string = ""
+      length.times do
+        string << current.data + " "
+        current = current.next_node
+      end
+      string.strip
+  end
+
+  def pop
+    tail_return = find_tail.data
+    current = @head
+    counter = 1
+    until counter + 1 == count
+      counter += 1
+      current = current.next_node
+    end
+    if counter + 1 == count
+      current.next_node = nil
+    end
+    @node_data.pop
+    tail_return
+  end
+
+
+
 
 end

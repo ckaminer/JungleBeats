@@ -109,6 +109,7 @@ class LinkedListTest < Minitest::Test
     list.append("boop")
     list.append("doop")
     list.append("deep")
+    binding.pry
     list.insert(2, "jeep")
 
     second_node = list.head.next_node
@@ -120,6 +121,38 @@ class LinkedListTest < Minitest::Test
     assert_equal "deep", list.find_tail.data
   end
 
+  def test_includes_method_finds_data
+    list = LinkedList.new
+    list.append("beep")
+    list.append("boop")
+    list.append("doop")
+
+    assert_equal true, list.includes?("boop")
+    assert_equal false, list.includes?("jeep")
+  end
+
+  def test_find_returns_proper_string
+    list = LinkedList.new
+    list.append("beep")
+    list.append("boop")
+    list.append("doop")
+    result = list.find(1,1)
+    result_two = list.find(2,2)
+
+    assert_equal "beep", result
+    assert_equal "boop doop", result_two
+  end
+
+  def test_pop_returns_tail_data
+    list = LinkedList.new
+    list.append("beep")
+    list.append("boop")
+    list.append("doop")
+    result = list.pop
+    binding.pry
+
+    assert_equal "doop", result
+  end
 
 
 
