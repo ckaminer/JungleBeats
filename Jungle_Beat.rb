@@ -15,4 +15,9 @@ require 'pry'
     end
   end
 
+  def play(rate, voice)
+    beat = @list.to_string
+    `say -r #{rate} -v #{voice} #{beat}`
+  end
+
 end

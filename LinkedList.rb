@@ -2,7 +2,7 @@ class LinkedList
 require "./Node"
 require 'pry'
 
-  attr_accessor :head, :next_node
+  attr_accessor :head, :next_node, :node_data
 
   def initialize
     @head = nil
@@ -39,7 +39,6 @@ require 'pry'
 
   def prepend(data)
     @node_data.unshift(data)
-    #@head.next_node = @head
     head = Node.new(data)
     head.next_node = @head
     @head = head
