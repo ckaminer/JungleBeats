@@ -87,11 +87,6 @@ require 'pry'
       break if find_tail.data != chunk
     end
       current.data == chunk
-      # if current.data == chunk
-      #   true
-      # else
-      #   false
-      # end
   end
 
   def find(position, length)
