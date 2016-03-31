@@ -1,7 +1,6 @@
-class LinkedList
 require "./Node"
 require 'pry'
-
+class LinkedList
   attr_accessor :head, :next_node
 
   def initialize
@@ -68,7 +67,7 @@ require 'pry'
         current = current.next_node
       end
     end
-      counter
+    counter
   end
 
   def to_string

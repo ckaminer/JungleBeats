@@ -1,8 +1,6 @@
-class JungleBeat
 require "./LinkedList"
 require 'pry'
-
-
+class JungleBeat
   attr_reader :list
   attr_accessor :rate, :voice
 

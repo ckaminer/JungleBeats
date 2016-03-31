@@ -26,5 +26,4 @@ class NodeTest < Minitest::Test
     assert_equal nil, result
   end
 
-
 end
