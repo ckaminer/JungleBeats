@@ -150,6 +150,4 @@ class LinkedListTest < Minitest::Test
     assert_equal "doop", result
   end
 
-
-
 end

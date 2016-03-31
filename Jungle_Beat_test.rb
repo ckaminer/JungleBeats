@@ -19,5 +19,22 @@ class JungleBeatTest < Minitest::Test
     assert_equal "beep", result_three
   end
 
+  def test_play_method_returns_beat
+    jb = JungleBeat.new
+    jb.append("ding dah oom oom ding oom oom oom ding dah oom oom ding dah oom oom ding dah oom oom")
+
+    jb.play
+  end
+
+  def test_give_me_a_four
+    jb = JungleBeat.new
+    jb.append("Lovisa, please give me a four")
+    jb.voice = "Alice"
+    jb.rate = 100
+
+    jb.play
+
+  end
+
 
 end

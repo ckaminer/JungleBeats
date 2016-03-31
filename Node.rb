@@ -5,7 +5,7 @@ class Node
   attr_accessor :data, :next_node
 
   def initialize(data = nil, next_node = nil)
-    @data = data.to_s
+    @data = data
     @next_node = next_node
   end
 

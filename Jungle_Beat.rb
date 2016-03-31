@@ -3,10 +3,13 @@ require "./LinkedList"
 require 'pry'
 
 
-  attr_accessor :list
+  attr_reader :list 
+  attr_accessor :rate, :voice
 
   def initialize
     @list = LinkedList.new
+    @rate = 400
+    @voice = "Boing"
   end
 
   def append(string)
@@ -16,9 +19,17 @@ require 'pry'
     end
   end
 
-  def play(rate, voice)
+  def play
     beat = @list.to_string
-    `say -r #{rate} -v #{voice} #{beat}`
+    `say -r #{@rate} -v #{@voice} #{beat}`
+  end
+
+  def reset_rate
+    @rate = 400
+  end
+
+  def reset_voice
+    @voice = "Boing"
   end
 
 end
