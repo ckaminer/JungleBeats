@@ -9,7 +9,9 @@ require 'pry'
   end
 
   def append(data)
-    if @head.nil?
+    if invalid_word?(data)
+      nil
+    elsif @head.nil?
       @head = Node.new(data)
     else
       find_tail.next_node = Node.new(data)
@@ -18,27 +20,35 @@ require 'pry'
   end
 
   def insert(position, data)
-    @head = Node.new(data) if empty?
-    if position == 0
-      prepend(data)
-    else position > 0
-      current = @head
-      count = 0
-      until position - 1 == count
-        count += 1
-        current = current.next_node
+    if invalid_word?(data)
+      nil
+    else
+      @head = Node.new(data) if empty?
+      if position == 0
+        prepend(data)
+      else position > 0
+        current = @head
+        count = 0
+        until position - 1 == count
+          count += 1
+          current = current.next_node
+        end
+          reattach_node = current.next_node
+          current.next_node = Node.new(data)
+          current.next_node.next_node = reattach_node
+        end
       end
-        reattach_node = current.next_node
-        current.next_node = Node.new(data)
-        current.next_node.next_node = reattach_node
-    end
   end
 
   def prepend(data)
-    head = Node.new(data)
-    head.next_node = @head
-    @head = head
-    data
+    if invalid_word?(data)
+      nil
+    else
+      head = Node.new(data)
+      head.next_node = @head
+      @head = head
+      data
+    end
   end
 
   def empty?
@@ -120,6 +130,11 @@ require 'pry'
       end
     end
     tail_return
+  end
+
+  def invalid_word?(data)
+    invalid_words = ["Charlie", "Mississippi", "Patagonia", "Junngle", "Beats", "Turing"]
+    invalid_words.include?(data.to_s)
   end
 
 end

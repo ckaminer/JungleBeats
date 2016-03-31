@@ -3,7 +3,7 @@ require "./LinkedList"
 require 'pry'
 
 
-  attr_reader :list 
+  attr_reader :list
   attr_accessor :rate, :voice
 
   def initialize
@@ -30,6 +30,10 @@ require 'pry'
 
   def reset_voice
     @voice = "Boing"
+  end
+
+  def count
+    @list.count
   end
 
 end

@@ -150,4 +150,19 @@ class LinkedListTest < Minitest::Test
     assert_equal "doop", result
   end
 
+  def test_invalid_word_method_removes_invalid_words
+    list = LinkedList.new
+    list.append("beep")
+    list.append("boop")
+
+    assert_equal 2, list.count
+    assert_equal "beep boop", list.to_string
+
+    list.append("Mississippi")
+
+    assert_equal 2, list.count
+    assert_equal "beep boop", list.to_string
+
+  end
+
 end
