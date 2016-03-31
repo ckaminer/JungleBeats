@@ -34,7 +34,7 @@ class LinkedListTest < Minitest::Test
     list.append("doop")
     list.append("beep")
     list.append("bop")
-
+    #binding.pry
     assert_equal "doop beep bop", list.to_string
   end
 

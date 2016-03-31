@@ -2,15 +2,13 @@ class LinkedList
 require "./Node"
 require 'pry'
 
-  attr_accessor :head, :next_node, :node_data
+  attr_accessor :head, :next_node
 
   def initialize
     @head = nil
-    @node_data = []
   end
 
   def append(data)
-    @node_data << data
     if @head.nil?
       @head = Node.new(data)
     else
@@ -33,12 +31,10 @@ require 'pry'
         reattach_node = current.next_node
         current.next_node = Node.new(data)
         current.next_node.next_node = reattach_node
-        @node_data.insert(position, data)
     end
   end
 
   def prepend(data)
-    @node_data.unshift(data)
     head = Node.new(data)
     head.next_node = @head
     @head = head
@@ -66,7 +62,13 @@ require 'pry'
   end
 
   def to_string
-    @node_data.join(" ")
+    string = "#{@head.data} "
+    current = @head
+    until current.next_node == nil
+      current = current.next_node
+      string << current.data + " "
+    end
+    string.strip
   end
 
   def find_tail
@@ -117,7 +119,6 @@ require 'pry'
         current.next_node = nil
       end
     end
-    @node_data.pop
     tail_return
   end
 
